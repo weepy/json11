@@ -203,7 +203,36 @@ public:
      */
     typedef std::initializer_list<std::pair<std::string, Type>> shape;
     bool has_shape(const shape & types, std::string & err) const;
+    
+    /// @weepy additions
+    operator long() {
+        return (long) int_value();
+    }
 
+    operator int() {
+        return int_value();
+    }
+    operator float() {
+        return (float) number_value();
+    }
+    operator double() {
+        return (double) number_value();
+    }
+    operator std::string() {
+        return string_value();
+    }
+    operator bool() {
+        return bool_value();
+    }
+
+    operator object() {
+        return object_items();
+    }
+
+    operator array() {
+        return array_items();
+    }
+    
 private:
     std::shared_ptr<JsonValue> m_ptr;
 };
